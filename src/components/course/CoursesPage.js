@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseList from './CourseList';
+import {browserHistory} from 'react-router';
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
@@ -14,6 +15,8 @@ class CoursesPage extends React.Component {
     //
     // this.onTitleChange = this.onTitleChange.bind(this);
     // this.onClickSave = this.onClickSave.bind(this);
+
+    this.redirectToAddCourse = this.redirectToAddCourse.bind(this);
   }
 
   // onTitleChange(event) {
@@ -31,12 +34,21 @@ class CoursesPage extends React.Component {
     return <div key={index}>{course.title}</div>;
   }
 
+  redirectToAddCourse(){
+    browserHistory.push('/course');
+  }
   render() {
     const {courses} = this.props; // in this way i get courses property from my props (curly braces)
     return (
       <div>
         <h1>Courses</h1>
         {/*{this.props.courses.map(this.courseRow)}*/}
+        <input
+          type="submit"
+          value="Add course"
+          className="btn btn-primary"
+          onClick={this.redirectToAddCourse}
+        />
         <CourseList courses={courses}/>
         {/*<h2>Add Course</h2>*/}
         {/*<input*/}
