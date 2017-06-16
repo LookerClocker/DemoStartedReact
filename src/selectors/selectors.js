@@ -7,3 +7,12 @@ export function authorsFormattedForDropdown(authors) {
     };
   });
 }
+
+export function citiesFormattedForDropdown(cities) {
+  return cities.map(city => {
+    return {
+      value: city.id,
+      text: city.name
+    };
+  });
+}

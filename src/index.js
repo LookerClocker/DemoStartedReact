@@ -8,12 +8,14 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
+import {loadCities} from './actions/cityActions';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 
 const store = configureStore();
 store.dispatch(loadCourses());
 store.dispatch(loadAuthors());
+store.dispatch(loadCities());
 
 render(
   <Provider store={store}>
