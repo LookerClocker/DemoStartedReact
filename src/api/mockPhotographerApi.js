@@ -16,3 +16,5 @@ class photographerApi {
     });
   }
 }
+
+export default photographerApi;
