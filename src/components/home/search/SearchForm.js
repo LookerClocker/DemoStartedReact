@@ -1,24 +1,32 @@
 import React, {PropTypes} from 'react';
-// import DateInput from '../common/DateInput';
+import SelectDate from '../../common/inputs/SelectDate';
 import SelectCity from '../../common/inputs/SelectCity';
 
 const SearchForm = ({allCities}) => {
   return (
-    <form>
-      <SelectCity
-        name="City"
-        label="List of cities"
-        value={allCities.value}
-        defaultOption="Select City"
-        options={allCities}
-      />
+    <div className="row jumbotron">
+      <form>
+        <div className="col-md-4">
+          <SelectDate/>
+        </div>
+        <div className="col-md-4">
+          <SelectCity
+            name="City"
+            value={allCities.value}
+            defaultOption="Select City"
+            options={allCities}
+          />
+        </div>
+        <div className="col-md-4">
+          <input
+            type="submit"
+            value="Find peoples"
+            className="btn btn-primary"
+          />
+        </div>
+      </form>
+    </div>
 
-      <input
-        type="submit"
-        value="Find City"
-        className="btn btn-primary"
-      />
-    </form>
   );
 };
 

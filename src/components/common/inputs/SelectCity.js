@@ -1,9 +1,8 @@
 import React, {PropTypes} from 'react';
 
-const SelectCity = ({name, label, options, defaultOption, value}) => {
+const SelectCity = ({name, options, defaultOption, value}) => {
   return (
     <div className="form-group">
-      <lable htmlFor={name}>{label}</lable>
       <div className="field">
         <select
           name={name}
@@ -22,7 +21,6 @@ const SelectCity = ({name, label, options, defaultOption, value}) => {
 
 SelectCity.propTypes = {
   name: PropTypes.string,
-  label: PropTypes.string,
   value: PropTypes.number,
   options: PropTypes.arrayOf(PropTypes.object),
   defaultOption: PropTypes.string.isRequired

@@ -13,3 +13,18 @@ a.active {
 nav {
   padding-top: 20px;
 }
+
+.react-datepicker__day-name, .react-datepicker__day {
+  display: inline-block;
+  width: 3.7rem;
+  line-height: 2.7rem;
+  text-align: center;
+  margin: 0.166rem;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.react-datepicker__day:hover {
+  border-radius: 0.3rem;
+  background-color: #f9ef68;
+}
