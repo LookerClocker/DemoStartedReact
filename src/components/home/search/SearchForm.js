@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import SelectDate from '../../common/inputs/SelectDate';
 import SelectCity from '../../common/inputs/SelectCity';
 
-const SearchForm = ({allCities}) => {
+const SearchForm = ({allCities, onSave}) => {
   return (
     <div className="row jumbotron">
       <form>
@@ -22,6 +22,7 @@ const SearchForm = ({allCities}) => {
             type="submit"
             value="Find peoples"
             className="btn btn-primary"
+            onClick={onSave}
           />
         </div>
       </form>
@@ -31,8 +32,8 @@ const SearchForm = ({allCities}) => {
 };
 
 SearchForm.propTypes = {
-  allCities: PropTypes.array.isRequired
-  // onSave: PropTypes.func.isRequired
+  allCities: PropTypes.array.isRequired,
+  onSave: React.PropTypes.func.isRequired
 };
 
 
