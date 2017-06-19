@@ -44,9 +44,9 @@ export class HomePage2 extends React.Component {
 
 HomePage2.propTypes = {
   cities: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired.isRequired,
+  actions: PropTypes.object.isRequired,
 
-  photographerActions: PropTypes.object.isRequired.isRequired,
+  photographerActions: PropTypes.object.isRequired,
   photographers: PropTypes.array.isRequired
 };
 
