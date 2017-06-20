@@ -1,11 +1,18 @@
-const PhotographerListRow = () => {
+import React, {PropTypes} from 'react';
+
+const PhotographerListRow = ({photograph}) => {
   return (
     <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
+      <td>&nbsp;</td>
+      <td>{photograph.firstName + ' ' + photograph.lastName}</td>
+      <td>{photograph.city}</td>
+      <td>{photograph.price}</td>
     </tr>
   );
 };
 
 export default PhotographerListRow;
+
+PhotographerListRow.propTypes = {
+  photograph: PropTypes.object.isRequired
+};

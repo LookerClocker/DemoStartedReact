@@ -6,7 +6,7 @@ import {citiesFormattedForDropdown} from '../../selectors/selectors';
 import * as cityActions from '../../actions/cityActions';
 import * as photographerActions from '../../actions/photographerActions';
 
-import PhotographerPage from '../photographer/PhotographersPage';
+import PhotographersList from '../photographer/PhotographersList';
 
 
 class HomePage2 extends React.Component {
@@ -30,7 +30,7 @@ class HomePage2 extends React.Component {
           allCities={this.props.cities}
           onSave={this.findPhotographers}
         />
-        <PhotographerPage
+        <PhotographersList
           photographers={this.props.photographers}
         />
       </div>
