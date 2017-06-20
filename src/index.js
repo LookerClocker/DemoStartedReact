@@ -13,6 +13,7 @@ import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 
 const store = configureStore();
+
 store.dispatch(loadCourses());
 store.dispatch(loadAuthors());
 store.dispatch(loadCities());

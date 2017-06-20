@@ -4,30 +4,26 @@ import {bindActionCreators} from 'redux';
 import SearchForm from './search/SearchForm';
 import {citiesFormattedForDropdown} from '../../selectors/selectors';
 import * as cityActions from '../../actions/cityActions';
-import PhotographerPage from '../photographer/PhotographersPage';
 import * as photographerActions from '../../actions/photographerActions';
 
-export class HomePage2 extends React.Component {
+import PhotographerPage from '../photographer/PhotographersPage';
+
+
+class HomePage2 extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      photographers: []
-    };
 
     this.findPhotographers = this.findPhotographers.bind(this);
   }
 
   findPhotographers(event) {
+    event.preventDefault();
 
-    this.props.photographerActions.loadPhotographers();
-
+    this.props.actions.loadPhotographers();
   }
 
 
   render() {
-
-    console.log('props', this.props);
-    console.log('state', this.state);
     return (
       <div>
         <SearchForm
@@ -44,10 +40,8 @@ export class HomePage2 extends React.Component {
 
 HomePage2.propTypes = {
   cities: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
-
-  photographerActions: PropTypes.object.isRequired,
-  photographers: PropTypes.array.isRequired
+  photographers: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 
@@ -55,23 +49,14 @@ function mapStateToProps(state, ownProps) {
   return {
     cities: citiesFormattedForDropdown(state.cities),
     photographers: state.photographers
-
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(cityActions, dispatch),
-    photographerActions: bindActionCreators(photographerActions, dispatch)
+    actions: bindActionCreators(Object.assign({}, cityActions, photographerActions), dispatch)
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators({cityActions, photographerActions}, dispatch)
-//   };
-// }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage2);
-
