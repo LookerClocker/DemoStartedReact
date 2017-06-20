@@ -6,7 +6,7 @@ const PhotographerListRow = ({photograph}) => {
       <td>&nbsp;</td>
       <td>{photograph.firstName + ' ' + photograph.lastName}</td>
       <td>{photograph.city}</td>
-      <td>{photograph.price}</td>
+      <td>{photograph.price} $ / hour</td>
     </tr>
   );
 };

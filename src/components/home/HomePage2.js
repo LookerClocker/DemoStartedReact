@@ -22,7 +22,6 @@ class HomePage2 extends React.Component {
     this.props.actions.loadPhotographers();
   }
 
-
   render() {
     return (
       <div>
