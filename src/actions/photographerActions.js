@@ -2,7 +2,7 @@ import * as types from './actionsTypes';
 import photographerApi from '../api/mockPhotographerApi';
 
 export function loadPhotographersSuccess (photographers) {
-  return {type: types.LOAD_PHOTOGRAPHERS_SUCCESS, photographers}
+  return {type: types.LOAD_PHOTOGRAPHERS_SUCCESS, photographers};
 }
 
 
