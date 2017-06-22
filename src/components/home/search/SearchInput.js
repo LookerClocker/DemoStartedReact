@@ -9,8 +9,7 @@ export class SearchInput extends React.Component {
     this.state = {
       filteredCities: [],
       upDownArrowCounter: 0,
-      value: '',
-      flag: ''
+      value: ''
     };
 
     this.filterCities = this.filterCities.bind(this);
@@ -21,7 +20,6 @@ export class SearchInput extends React.Component {
   filterCities(event) {
 
     let value = event.target.value.toLowerCase();
-    let suggestedCitiesList = document.getElementById('suggested_city');
 
     if (value === '') {
 
@@ -34,109 +32,49 @@ export class SearchInput extends React.Component {
     }
 
     if (event.keyCode === 40) {
-
-      if(this.state.upDownArrowCounter >= 0) {
-        this.state.upDownArrowCounter++;
+      if (document.getElementById('suggested_city').lastChild === document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1]) {
+        return;
       }
 
-      console.log('40',this.state.upDownArrowCounter);
 
-      if(this.state.upDownArrowCounter) {
-        document.getElementById('suggested_city').children[this.state.upDownArrowCounter -1].removeAttribute('class');
+      if (this.state.upDownArrowCounter >= 0) {
+        this.state.upDownArrowCounter++;
+
+        console.log('40', this.state.upDownArrowCounter - 1);
+      }
+
+
+      if (this.state.upDownArrowCounter >= 2) {
+        document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 2].removeAttribute('class');
       }
 
       document.getElementById('suggested_city').lastChild.setAttribute('id', 'last_search_list_elem');
 
       let allLi = document.getElementById('suggested_city').querySelectorAll('li');
 
-      this.setState({value: allLi[this.state.upDownArrowCounter-1].innerText});
+      this.setState({value: allLi[this.state.upDownArrowCounter - 1].innerText});
 
-      if (document.getElementById('suggested_city').children[this.state.upDownArrowCounter -1].id === 'last_search_list_elem') {
+      if (document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].id === 'last_search_list_elem') {
+        document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
         return;
       }
 
-      document.getElementById('suggested_city').children[this.state.upDownArrowCounter -1].setAttribute('class','selected');
-
-      // this.test(this.state.upDownArrowCounter);
-
-      // this.state.upDownArrowCounter++;
-
-
-
-
-
-
-
-
-
-      // if (this.state.flag === 'arrowUp') {
-      //   this.state.upDownArrowCounter++;
-      // }
-      //
-      // this.state.flag = 'arrowDown';
-      //
-      // suggestedCitiesList.lastChild.setAttribute('id', 'last_search_list_elem');
-      //
-      //
-      // if (this.state.upDownArrowCounter < this.state.filteredCities.length) {
-      //
-      //   let listElement = suggestedCitiesList.children[this.state.upDownArrowCounter];
-      //   let listElementText = listElement.innerText;
-      //
-      //   this.setState({value: listElementText});
-      //
-      //   if (listElement.id === 'last_search_list_elem') {
-      //     return;
-      //   }
-      //
-      //   this.state.upDownArrowCounter++;
-      // }
+      document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
     }
 
     else if (event.keyCode === 38) {
-
-      console.log('38',this.state.upDownArrowCounter-1);
-
-      if(document.getElementById('suggested_city').children[this.state.upDownArrowCounter -1].hasAttribute('class')) {
-        this.setState({value: document.getElementById('suggested_city').children[this.state.upDownArrowCounter -1].innerText});
-        this.state.upDownArrowCounter--;
+      if (document.getElementById('suggested_city').firstChild === document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1]) {
+        return;
       }
 
+      console.log('38', this.state.upDownArrowCounter);
+      console.log('38', document.getElementById('suggested_city').children[this.state.upDownArrowCounter]);
 
-
-      // this.state.upDownArrowCounter--;
-      //
-      // console.log('38',this.state.upDownArrowCounter);
-      //
-      // let allLi = document.getElementById('suggested_city').querySelectorAll('li');
-      //
-      // this.setState({value: allLi[this.state.upDownArrowCounter].innerText});
-      //
-      // this.state.upDownArrowCounter--;
-
-
-
-
-
-      // let listElement = document.getElementById('suggested_city').children[this.state.upDownArrowCounter];
-      //
-      // suggestedCitiesList.lastChild.setAttribute('id', 'last_search_list_elem');
-      //
-      // if((this.state.flag === 'arrowDown') && (listElement.id !== 'last_search_list_elem')) {
-      //   this.state.upDownArrowCounter--;
-      // }
-      //
-      // this.state.flag = 'arrowUp';
-      //
-      // if (this.state.upDownArrowCounter) {
-      //
-      //     this.state.upDownArrowCounter--;
-      //     debugger;
-      //
-      //   let listElementText = suggestedCitiesList.children[this.state.upDownArrowCounter].innerText;
-      //   this.setState({value: listElementText});
-      // }
-
+      if (document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].hasAttribute('class')) {
+        this.setState({value: document.getElementById('suggested_city').children[this.state.upDownArrowCounter].innerText});
+        console.log('38 value state', this.state.value);
+        this.state.upDownArrowCounter--;
+      }
     }
 
     else {
@@ -152,7 +90,7 @@ export class SearchInput extends React.Component {
 
   }
 
-  test(value){
+  test(value) {
 
     if (event.keyCode === 38) {
       console.log('val-', value);
