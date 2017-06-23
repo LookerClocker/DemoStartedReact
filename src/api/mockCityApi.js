@@ -7,7 +7,7 @@ const cities = [
   {id: 4, name: 'Sevilla'},
   {id: 5, name: 'Monte Carlo'},
   {id: 6, name: 'Monaco'},
-  {id: 7, name: 'Monte Carlo'},
+  {id: 7, name: 'Monte Carlo2'},
   {id: 8, name: 'M'},
   {id: 9, name: 'MM'},
   {id: 10, name: 'Monlo'},

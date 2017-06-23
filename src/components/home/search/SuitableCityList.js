@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 
+import './SuitableCityList.scss';
+
 const SuitableCityList = (({cities}) => {
   return (
     <ul id="suggested_city">
