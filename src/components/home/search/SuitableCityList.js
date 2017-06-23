@@ -4,7 +4,7 @@ const SuitableCityList = (({cities}) => {
   return (
     <ul id="suggested_city">
       {cities.map((city) =>
-        <li key={cities.indexOf(city)}>{city.charAt(0).toUpperCase() + city.slice(1)}</li>
+        <li key={city.id}>{city.name.charAt(0).toUpperCase() + city.name.slice(1)}</li>
       )}
     </ul>
   );

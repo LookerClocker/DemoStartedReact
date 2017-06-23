@@ -14,12 +14,12 @@ export class SearchInput extends React.Component {
 
     this.filterCities = this.filterCities.bind(this);
     this.changeValue = this.changeValue.bind(this);
-    this.test = this.test.bind(this);
   }
 
   filterCities(event) {
 
-    let value = event.target.value.toLowerCase();
+    let value = event.target.value.toLowerCase(),
+      suggestedCitiesList = document.getElementById('suggested_city');
 
     if (value === '') {
 
@@ -32,70 +32,56 @@ export class SearchInput extends React.Component {
     }
 
     if (event.keyCode === 40) {
-      if (document.getElementById('suggested_city').lastChild === document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1]) {
+      if (suggestedCitiesList.lastChild === suggestedCitiesList.children[this.state.upDownArrowCounter - 1]) {
         return;
       }
-
 
       if (this.state.upDownArrowCounter >= 0) {
         this.state.upDownArrowCounter++;
-
-        console.log('40', this.state.upDownArrowCounter - 1);
       }
-
 
       if (this.state.upDownArrowCounter >= 2) {
-        document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 2].removeAttribute('class');
+        suggestedCitiesList.children[this.state.upDownArrowCounter - 2].removeAttribute('class');
       }
 
-      document.getElementById('suggested_city').lastChild.setAttribute('id', 'last_search_list_elem');
+      suggestedCitiesList.lastChild.setAttribute('id', 'last_search_list_elem');
 
-      let allLi = document.getElementById('suggested_city').querySelectorAll('li');
+      let allLi = suggestedCitiesList.querySelectorAll('li');
 
       this.setState({value: allLi[this.state.upDownArrowCounter - 1].innerText});
 
-      if (document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].id === 'last_search_list_elem') {
-        document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
+      if (suggestedCitiesList.children[this.state.upDownArrowCounter - 1].id === 'last_search_list_elem') {
+        suggestedCitiesList.children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
         return;
       }
 
-      document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
+      suggestedCitiesList.children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
     }
 
     else if (event.keyCode === 38) {
-      if (document.getElementById('suggested_city').firstChild === document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1]) {
+      if (suggestedCitiesList.firstChild === document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1]) {
         return;
       }
 
-      console.log('38', this.state.upDownArrowCounter);
-      console.log('38', document.getElementById('suggested_city').children[this.state.upDownArrowCounter]);
+      this.state.upDownArrowCounter--;
 
-      if (document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].hasAttribute('class')) {
-        this.setState({value: document.getElementById('suggested_city').children[this.state.upDownArrowCounter].innerText});
-        console.log('38 value state', this.state.value);
-        this.state.upDownArrowCounter--;
+      suggestedCitiesList.children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
+
+      if (suggestedCitiesList.children[this.state.upDownArrowCounter].hasAttribute('class')) {
+        this.setState({value: suggestedCitiesList.children[this.state.upDownArrowCounter - 1].innerText});
       }
     }
 
     else {
       let result = [];
       for (let i = 0; i < this.props.citiesNames.length; i++) {
-        if (this.props.citiesNames[i].indexOf(value) === 0) {
+        if (this.props.citiesNames[i].name.indexOf(value) === 0) {
           result.push(this.props.citiesNames[i]);
         }
       }
 
       this.setState({filteredCities: result});
     }
-
-  }
-
-  test(value) {
-
-    if (event.keyCode === 38) {
-      console.log('val-', value);
-    }
-
   }
 
   changeValue(event) {
@@ -129,7 +115,10 @@ function mapStateToProps(state, ownProps) {
   return {
     cities: state.cities,
     citiesNames: state.cities.map((city) => {
-      return city.name.toLowerCase();
+      return {
+        id: city.id,
+        name: city.name.toLowerCase()
+      };
     })
   };
 }
