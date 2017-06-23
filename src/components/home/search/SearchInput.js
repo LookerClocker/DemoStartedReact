@@ -21,6 +21,9 @@ export class SearchInput extends React.Component {
     let value = event.target.value.toLowerCase(),
       suggestedCitiesList = document.getElementById('suggested_city');
 
+    /**
+     * If value is empty. I deleted or something than just reset all counters and cities
+     */
     if (value === '') {
 
       this.setState({
@@ -31,7 +34,14 @@ export class SearchInput extends React.Component {
       return;
     }
 
+    /**
+     * Handling down arrow pressing
+     */
     if (event.keyCode === 40) {
+
+      /**
+       * Check if it is the last element of list
+       */
       if (suggestedCitiesList.lastChild === suggestedCitiesList.children[this.state.upDownArrowCounter - 1]) {
         return;
       }
@@ -50,28 +60,54 @@ export class SearchInput extends React.Component {
 
       this.setState({value: allLi[this.state.upDownArrowCounter - 1].innerText});
 
+      /**
+       * Set class attribute to the last element of list
+       */
+
       if (suggestedCitiesList.children[this.state.upDownArrowCounter - 1].id === 'last_search_list_elem') {
         suggestedCitiesList.children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
         return;
       }
 
+      /**
+       * Set class attribute to active element.
+       * I`m using class attribute because when
+       * i press up arrow key i need to know what
+       * element is active now for start counter
+       */
       suggestedCitiesList.children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
     }
 
+    /**
+     * Handling up arrow key
+     */
     else if (event.keyCode === 38) {
-      if (suggestedCitiesList.firstChild === document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1]) {
+
+      /**
+       * If it is the first element in list, then don`t decrement counter. Just return
+       */
+      if (suggestedCitiesList.firstChild === suggestedCitiesList.children[this.state.upDownArrowCounter - 1]) {
         return;
       }
 
       this.state.upDownArrowCounter--;
 
+      /**
+       * Set class attribute to the last element of list
+       */
       suggestedCitiesList.children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
 
+      /**
+       * If current list element has class, it means that i need to add into fields previous list element`s value
+       */
       if (suggestedCitiesList.children[this.state.upDownArrowCounter].hasAttribute('class')) {
         this.setState({value: suggestedCitiesList.children[this.state.upDownArrowCounter - 1].innerText});
       }
     }
 
+    /**
+     * If i`ve pressed anything else, than just find if matched
+     */
     else {
       let result = [];
       for (let i = 0; i < this.props.citiesNames.length; i++) {
