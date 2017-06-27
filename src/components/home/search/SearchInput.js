@@ -118,13 +118,13 @@ export class SearchInput extends React.Component {
 
       if (suggestedCitiesList) {
 
-        if (this.state.upDownArrowCounter < 0) {
+        if (this.state.upDownArrowCounter <= 0) {
+
           this.setState({upDownArrowCounter: 0});
 
           if (suggestedCitiesList.firstChild === suggestedCitiesList.children[this.state.upDownArrowCounter]) {
             return;
           }
-
 
           suggestedCitiesList.children[this.state.upDownArrowCounter].setAttribute('class', 'selected');
 
