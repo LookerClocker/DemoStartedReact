@@ -45,13 +45,12 @@ export class SearchInput extends React.Component {
          */
 
         if ((suggestedCitiesList.children.length > 1) && (this.state.upDownArrowCounter >= 1)) {
-          suggestedCitiesList.children[this.state.upDownArrowCounter - 1].removeAttribute('class')
+          suggestedCitiesList.children[this.state.upDownArrowCounter - 1].removeAttribute('class');
         } else {
           suggestedCitiesList.children[0].removeAttribute('class');
         }
 
-        this.state.upDownArrowCounter = 0;
-
+        this.setState({upDownArrowCounter: 0});
       }
     }
 
@@ -64,11 +63,11 @@ export class SearchInput extends React.Component {
       if (suggestedCitiesList) {
 
         if (this.state.upDownArrowCounter >= suggestedCitiesList.children.length) {
-          this.state.upDownArrowCounter = suggestedCitiesList.children.length;
+          this.setState({upDownArrowCounter: suggestedCitiesList.children.length});
         }
 
         if (this.state.upDownArrowCounter < 0) {
-          this.state.upDownArrowCounter = 0;
+          this.setState({upDownArrowCounter: 0});
         }
 
 
@@ -120,7 +119,7 @@ export class SearchInput extends React.Component {
       if (suggestedCitiesList) {
 
         if (this.state.upDownArrowCounter < 0) {
-          this.state.upDownArrowCounter = 0;
+          this.setState({upDownArrowCounter: 0});
 
           if (suggestedCitiesList.firstChild === suggestedCitiesList.children[this.state.upDownArrowCounter]) {
             return;
@@ -167,8 +166,17 @@ export class SearchInput extends React.Component {
     else {
       let result = [];
       for (let i = 0; i < this.props.citiesNames.length; i++) {
-        if (this.props.citiesNames[i].name.indexOf(value) === 0) {
-          result.push(this.props.citiesNames[i]);
+
+        let cityName = this.props.citiesNames[i].name.split(' ');
+        let j = 0;
+
+        while (j < cityName.length) {
+
+          if (cityName[j].indexOf(value) === 0) {
+            result.push(this.props.citiesNames[i]);
+          }
+
+          j++;
         }
       }
 
