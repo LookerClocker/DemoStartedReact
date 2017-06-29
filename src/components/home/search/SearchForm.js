@@ -3,29 +3,18 @@ import SelectDate from '../../common/inputs/SelectDate';
 import SelectCity from '../../common/inputs/SelectCity';
 import SearchInput from '../../home/search/SearchInput';
 
-const SearchForm = ({allCities, onSave}) => {
+const SearchForm = ({onSave}) => {
   return (
     <div className="row jumbotron">
       <form>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <SelectDate/>
         </div>
-        <div className="col-md-3">
-          <SelectCity
-            name="City"
-            value={allCities.value}
-            defaultOption="Select City"
-            options={allCities}
-          />
-        </div>
-
-        <div className="col-md-3">
+        <div className="col-md-4">
           <SearchInput/>
         </div>
 
-
-
-        <div className="col-md-3">
+        <div className="col-md-4">
           <input
             type="submit"
             value="Find peoples"

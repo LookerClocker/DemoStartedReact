@@ -2,11 +2,11 @@ import React, {PropTypes} from 'react';
 
 import './SuitableCityList.scss';
 
-const SuitableCityList = (({cities}) => {
+const SuitableCityList = (({cities, cityClick}) => {
   return (
     <ul id="suggested_city">
       {cities.map((city) =>
-        <li key={city.id}>{city.name.charAt(0).toUpperCase() + city.name.slice(1)}</li>
+        <li onClick={cityClick} key={city.id}>{city.name.charAt(0).toUpperCase() + city.name.slice(1)}</li>
       )}
     </ul>
   );
@@ -14,7 +14,8 @@ const SuitableCityList = (({cities}) => {
 });
 
 SuitableCityList.propTypes = {
-  cities: PropTypes.array.isRequired
+  cities: PropTypes.array.isRequired,
+  cityClick: PropTypes.func.isRequired
 };
 
 export default SuitableCityList;

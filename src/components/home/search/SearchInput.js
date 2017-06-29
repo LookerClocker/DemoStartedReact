@@ -16,7 +16,10 @@ export class SearchInput extends React.Component {
 
     this.filterCities = this.filterCities.bind(this);
     this.changeValue = this.changeValue.bind(this);
+    this.onCityClick = this.onCityClick.bind(this);
+    this.openList = this.openList.bind(this);
   }
+
 
   filterCities(event) {
 
@@ -61,6 +64,8 @@ export class SearchInput extends React.Component {
     if (event.keyCode === 40) {
 
       if (suggestedCitiesList) {
+
+        suggestedCitiesList.classList.remove('hidden');
 
         if (this.state.upDownArrowCounter >= suggestedCitiesList.children.length) {
           this.setState({upDownArrowCounter: suggestedCitiesList.children.length});
@@ -118,6 +123,8 @@ export class SearchInput extends React.Component {
 
       if (suggestedCitiesList) {
 
+        suggestedCitiesList.classList.remove('hidden');
+
         if (this.state.upDownArrowCounter <= 0) {
 
           this.setState({upDownArrowCounter: 0});
@@ -160,10 +167,20 @@ export class SearchInput extends React.Component {
       }
     }
 
+    else if (event.keyCode === 13) {
+      if (suggestedCitiesList) {
+        suggestedCitiesList.classList.add('hidden');
+      }
+    }
+
     /**
      * If i`ve pressed anything else, than just find if matched
      */
     else {
+      if (suggestedCitiesList) {
+        suggestedCitiesList.classList.remove('hidden');
+      }
+
       let result = [];
       for (let i = 0; i < this.props.citiesNames.length; i++) {
 
@@ -188,6 +205,32 @@ export class SearchInput extends React.Component {
     this.setState({value: event.target.value});
   }
 
+  /**
+   * If list not empty then open it when clicking on input
+   */
+  openList() {
+    if (document.getElementById('suggested_city')) {
+      document.getElementById('suggested_city').classList.remove('hidden');
+    }
+  }
+
+  /**
+   * Set city value by clicking on specific city
+   * @param value
+   */
+  onCityClick(value) {
+    if (this.state.upDownArrowCounter >= 1) {
+      document.getElementById('suggested_city').children[this.state.upDownArrowCounter - 1].removeAttribute('class');
+    }
+
+    this.setState({
+      value: value.currentTarget.innerText,
+      upDownArrowCounter: 0
+    });
+
+    document.getElementById('suggested_city').classList.add('hidden');
+  }
+
   render() {
     return (
       <div>
@@ -198,8 +241,10 @@ export class SearchInput extends React.Component {
           onKeyUp={this.filterCities}
           value={this.state.value}
           onChange={this.changeValue}
+          onFocus={this.openList}
         />
-        {this.state.filteredCities.length ? <SuitableCityList cities={this.state.filteredCities}/> : ''}
+        {this.state.filteredCities.length ?
+          <SuitableCityList cityClick={this.onCityClick} cities={this.state.filteredCities}/> : ''}
       </div>
     );
   }
