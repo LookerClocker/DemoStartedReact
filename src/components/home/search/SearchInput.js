@@ -23,7 +23,11 @@ export class SearchInput extends React.Component {
 
   filterCities(event) {
 
-    let value = event.target.value.toLowerCase(),
+    let validValue = event.target.value.toLowerCase().split(' ').filter((item) => {
+      return item !== '';
+    });
+
+    let value = validValue.join(' '),
       suggestedCitiesList = document.getElementById('suggested_city');
 
     /**
@@ -39,17 +43,16 @@ export class SearchInput extends React.Component {
       return;
     }
 
-
+    /**
+     * If backspace was pressed then just remove 'select' class and reset counter to 0
+     */
     if (event.keyCode === 8) {
       if (suggestedCitiesList) {
 
-        /**
-         * If backspace was pressed then just remove 'select' class and reset counter to 0
-         */
-
         if ((suggestedCitiesList.children.length > 1) && (this.state.upDownArrowCounter >= 1)) {
           suggestedCitiesList.children[this.state.upDownArrowCounter - 1].removeAttribute('class');
-        } else {
+        }
+        else {
           suggestedCitiesList.children[0].removeAttribute('class');
         }
 
@@ -100,7 +103,6 @@ export class SearchInput extends React.Component {
         /**
          * Set class attribute to the last element of list
          */
-
         if (suggestedCitiesList.children[this.state.upDownArrowCounter - 1].id === 'last_search_list_elem') {
           suggestedCitiesList.children[this.state.upDownArrowCounter - 1].setAttribute('class', 'selected');
           return;
@@ -141,6 +143,7 @@ export class SearchInput extends React.Component {
         }
 
         else {
+
           /**
            * If it is the first element in list, then don`t decrement counter. Just return
            */
@@ -167,6 +170,9 @@ export class SearchInput extends React.Component {
       }
     }
 
+    /**
+     * When Enter key was pressed, then hold all values and just hide list
+     */
     else if (event.keyCode === 13) {
       if (suggestedCitiesList) {
         suggestedCitiesList.classList.add('hidden');
