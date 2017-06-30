@@ -1,17 +1,18 @@
 import delay from './delay';
 
 const cities = [
-  {id: 1, name: 'Barcelona'},
-  {id: 2, name: 'Madrid'},
-  {id: 3, name: 'Malaga'},
-  {id: 4, name: 'Sevilla'},
-  {id: 5, name: 'Monte Carlo'},
-  {id: 6, name: 'Monaco'},
-  {id: 7, name: 'Monte Carlo2'},
-  {id: 8, name: 'M'},
-  {id: 9, name: 'MM'},
-  {id: 10, name: 'Monlo'},
-  {id: 11, name: 'mm'}
+  {id: 1, name: 'Barcelona', country: 'Spain'},
+  {id: 2, name: 'Madrid', country: 'Spain'},
+  {id: 3, name: 'Malaga', country: 'Spain'},
+  {id: 4, name: 'Sevilla', country: 'Spain'},
+  {id: 5, name: 'Monte Carlo', country: 'Monaco'},
+  {id: 6, name: 'Kyiv', country: 'Ukraine'},
+  {id: 7, name: 'Rome', country: 'Italy'},
+  {id: 8, name: 'Venezia', country: 'Italy'},
+  {id: 9, name: 'Florence', country: 'Italy'},
+  {id: 10, name: 'Paris', country: 'France'},
+  {id: 11, name: 'Marcel', country: 'France'},
+  {id: 12, name: 'New York', country: ''}
 ];
 
 class CityApi {

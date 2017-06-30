@@ -191,8 +191,11 @@ export class SearchInput extends React.Component {
       for (let i = 0; i < this.props.citiesNames.length; i++) {
 
         let cityName = this.props.citiesNames[i].name.split(' ');
+        let cityCountry = this.props.citiesNames[i].country.split(' ');
         let j = 0;
+        let k = 0;
 
+        // if (value.length > 2) {
         while (j < cityName.length) {
 
           if (cityName[j].indexOf(value) === 0) {
@@ -201,6 +204,16 @@ export class SearchInput extends React.Component {
 
           j++;
         }
+
+        while (k < cityCountry.length) {
+
+          if (cityCountry[k].indexOf(value) === 0) {
+            result.push(this.props.citiesNames[i]);
+          }
+
+          k++;
+        }
+        // }
       }
 
       this.setState({filteredCities: result});
@@ -238,12 +251,13 @@ export class SearchInput extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <input
           className="form-control"
           type="search"
-          placeholder="Type a city"
+          placeholder="Type a city, country..."
           onKeyUp={this.filterCities}
           value={this.state.value}
           onChange={this.changeValue}
@@ -268,7 +282,8 @@ function mapStateToProps(state, ownProps) {
     citiesNames: state.cities.map((city) => {
       return {
         id: city.id,
-        name: city.name.toLowerCase()
+        name: city.name.toLowerCase(),
+        country: city.country.toLowerCase()
       };
     })
   };
