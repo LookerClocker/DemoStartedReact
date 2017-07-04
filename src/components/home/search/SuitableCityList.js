@@ -6,6 +6,10 @@ const SuitableCityList = (({cities, cityClick}) => {
   return (
     <ul id="suggested_city">
       {cities.map((city) => {
+
+        /**
+         * Formatted output
+         */
           let name = city.name.charAt(0).toUpperCase() + city.name.slice(1),
               country = city.country.charAt(0).toUpperCase() + city.country.slice(1),
               fullTitle;

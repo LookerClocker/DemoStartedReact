@@ -30,7 +30,10 @@ export class SearchInput extends React.Component {
     let value = validValue.join(' '),
       suggestedCitiesList = document.getElementById('suggested_city');
 
-
+    /**
+     * Implemented method which allows to push into array only objects with unique id (different object)
+     * @param value
+     */
     Array.prototype.pushObjectWithUniqId = function(value) {
       for(let i=0; i<this.length; i++){
         if(this[i].id === value.id) {
