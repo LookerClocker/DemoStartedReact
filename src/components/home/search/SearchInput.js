@@ -30,6 +30,16 @@ export class SearchInput extends React.Component {
     let value = validValue.join(' '),
       suggestedCitiesList = document.getElementById('suggested_city');
 
+
+    Array.prototype.pushObjectWithUniqId = function(value) {
+      for(let i=0; i<this.length; i++){
+        if(this[i].id === value.id) {
+          return;
+        }
+      }
+      this.push(value);
+    };
+
     /**
      * If value is empty. I deleted or something than just reset all counters and cities
      */
@@ -199,7 +209,7 @@ export class SearchInput extends React.Component {
         while (j < cityName.length) {
 
           if (cityName[j].indexOf(value) === 0) {
-            result.push(this.props.citiesNames[i]);
+            result.pushObjectWithUniqId(this.props.citiesNames[i]);
           }
 
           j++;
@@ -208,7 +218,7 @@ export class SearchInput extends React.Component {
         while (k < cityCountry.length) {
 
           if (cityCountry[k].indexOf(value) === 0) {
-            result.push(this.props.citiesNames[i]);
+            result.pushObjectWithUniqId(this.props.citiesNames[i]);
           }
 
           k++;
