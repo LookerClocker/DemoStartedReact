@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
 import SelectDate from '../../common/inputs/SelectDate';
-import SelectCity from '../../common/inputs/SelectCity';
 import SearchInput from '../../home/search/SearchInput';
+
+import './SearchForm.scss';
 
 const SearchForm = ({onSave}) => {
   return (
