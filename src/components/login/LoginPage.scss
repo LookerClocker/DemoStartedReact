@@ -1,0 +1,91 @@
+.element-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-register_modal {
+  width: 450px;
+  height: auto;
+  background-color: #fff;
+  border: 1px solid #218daf;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 190px;
+  padding: 20px 40px;
+
+  .user-login_form {
+
+    .bootstrapped-label {
+      width: 100%;
+      font-size: 14px;
+      display: inline-block;
+      line-height: 1.5;
+      color: #000;
+      font-weight: normal;
+      margin-top: 16px;
+    }
+
+    input {
+      width: 100%;
+      min-height: 30px;
+      box-shadow: 0 0 2px #095058;
+      border: none;
+    }
+
+    .forgot-password_trigger {
+      font-size: 12px;
+      text-transform: lowercase;
+      text-decoration: none;
+    }
+
+    .submit_user-login_form {
+      margin: 15px 0 25px 0;
+      background-color: #218daf;
+      color: #fff;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        background-color: #095058;
+      }
+    }
+  }
+
+  h6 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #9cc0d4;
+    line-height: 0.1em;
+    margin: 10px 0 25px;
+  }
+
+  h6 span {
+    background: #fff;
+    padding: 0 10px;
+  }
+
+  .social-media-wrapper {
+    display: flex;
+    justify-content: center;
+
+    a {
+      border: 1px solid #000;
+      padding: 13px;
+      border-radius: 5px;
+      min-width: 40%;
+      max-width: 50%;
+      text-decoration: none;
+    }
+  }
+}
+
+
+

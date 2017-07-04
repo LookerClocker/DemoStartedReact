@@ -1,7 +1,8 @@
 #top {
   min-height: 50px !important;
   height: 50px !important;
-  background-color: #00BCD4;
+  //background-color: #00BCD4;
+  background-color: #218daf;;
   margin: 0 0 5px 0;
   width: 100%;
   border: none;
@@ -12,6 +13,7 @@
     color: #fff;
     font-size: 18px;
     padding: 0 0 0 10px;
+    cursor: pointer;
   }
 
   .login-register_area {
@@ -19,7 +21,7 @@
 
     button {
       float: right;
-      color: #00bcd4;
+      color: #218daf;;;
       background-color: #fff;
       border: none;
       margin: 0 5px 0 10px;
@@ -27,15 +29,15 @@
       text-transform: capitalize;
       cursor: pointer;
       padding: 5px 10px 5px 10px;
-    }
 
-    button:hover {
-      color: #fff;
-      background-color: #218daf;
-    }
+      &:hover {
+        color: #fff;
+        background-color: #d49500;
+      }
 
-    button:focus {
-      outline: none
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
