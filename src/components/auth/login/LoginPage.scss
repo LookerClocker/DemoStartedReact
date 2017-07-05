@@ -14,7 +14,8 @@
   left: 0;
   right: 0;
   border-radius: 2px;
-  top: 180px;
+  //top: 180px;
+  top: 18%;
   font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 
   .close-login-modal-dialog {
@@ -26,7 +27,7 @@
     margin: 4px 4px 0 2px;
     background-color: #218daf;
     cursor: pointer;
-    padding: 2.1px 0 0 3.5px;
+    padding: 1px 0 0 3px;
 
     &:hover {
       background-color: #fff;

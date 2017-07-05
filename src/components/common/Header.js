@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {Link} from 'react-router';
 import './Header.scss';
 import LoginPage from '../auth/login/LoginPage';
 import RegisterPage from '../auth/register/RegisterPage';
@@ -45,15 +46,18 @@ class Header extends React.Component {
     return (
       <div>
         <div className="row" id="top">
-          <div className="col-md-6">
-            <span id="logo">Be My Paparazzi!</span>
-          </div>
-          <div className="col-md-6">
-            <div className="login-register_area">
-              <button>Register</button>
-              <button onClick={this.openLoginWindow}>sign in</button>
+          <div className="stable-header-work-area">
+            <div className="col-md-6">
+              <span id="logo"><Link to="/">BMP</Link></span>
+            </div>
+            <div className="col-md-6">
+              <div className="login-register_area">
+                <button>Register</button>
+                <button onClick={this.openLoginWindow}>sign in</button>
+              </div>
             </div>
           </div>
+
         </div>
         <div>
 
