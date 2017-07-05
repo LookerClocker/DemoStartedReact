@@ -10,6 +10,9 @@ class App extends React.Component {
           loading={this.props.loading}
         />
         {this.props.children}
+        <footer>
+          hello
+        </footer>
       </div>
     );
   }

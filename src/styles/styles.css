@@ -7,6 +7,19 @@ body {
   position:relative;
 }
 
+footer {
+  background-color: rgb(51, 122, 183);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.jumbotron {
+  background-color: #fff !important;
+}
 .overlay{
   position: absolute;
   top: 0;
