@@ -1,0 +1,157 @@
+.element-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-register_modal {
+  width: 450px;
+  height: auto;
+  background-color: #fff;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 180px;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;;
+
+  .user-login_form {
+    padding: 20px 40px;
+
+    .bootstrapped-label {
+      width: 100%;
+      font-size: 14px;
+      display: inline-block;
+      line-height: 1.5;
+      color: #000;
+      font-weight: normal;
+      margin-top: 16px;
+    }
+
+    input {
+      width: 100%;
+      min-height: 30px;
+      box-shadow: 0 0 2px #095058;
+      border: none;
+    }
+
+    .forgot-password_trigger {
+      font-size: 12px;
+      text-transform: lowercase;
+      text-decoration: none;
+      color: #218daf;
+
+      &:hover {
+        color: #000;
+      }
+    }
+
+    .submit_user-login_form,
+    .submit_user-register_form {
+      margin: 15px 0 25px 0;
+      background-color: #218daf;
+      color: #fff;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        background-color: #d49500;
+      }
+    }
+  }
+  .social-media-buttons_header {
+    padding: 0 40px;
+
+    h6 {
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #9cc0d4;
+      line-height: 0.1em;
+      margin: 10px 0 25px;
+      padding: 0 40px;
+    }
+
+    h6 span {
+      background: #fff;
+      padding: 0 10px;
+    }
+  }
+
+  .social-media-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40px;
+
+    a {
+      border: 1px solid #218daf;
+      padding: 13px;
+      border-radius: 5px;
+      min-width: 40%;
+      max-width: 50%;
+      text-decoration: none;
+      text-transform: capitalize;
+      font-weight: bold;
+      color: #218daf;
+
+      &:hover {
+        background-color: #218daf;
+        color: #fff;
+        border: none;
+      }
+    }
+  }
+
+  hr {
+    border-top: 1px solid #9cc0d4;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+
+  .terms-and-conditions {
+    font-size: 10px;
+    line-height: 15px;
+    padding: 10px 40px 5px 40px;
+
+    a {
+      cursor: pointer;
+      color: #218daf;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  .menu-tabs {
+
+    .login-tab,
+    .register-tab {
+      width: 50%;
+      display: inline-block;
+      background-color: transparent;
+      min-height: 38px;
+      padding: 7px 0 0 28px;
+      cursor: pointer;
+      font-size: 15px;
+      text-transform: capitalize;
+    }
+  }
+
+  .tab-active {
+    width: 50%;
+    display: inline-block;
+    background-color: rgba(33, 141, 175, 0.17);
+    min-height: 38px;
+    padding: 7px 0 0 28px;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: capitalize;
+  }
+}
