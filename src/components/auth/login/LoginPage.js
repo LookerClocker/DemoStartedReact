@@ -8,10 +8,12 @@ class LoginPage extends React.Component {
     this.state = {};
   }
 
-
   render() {
     return (
       <div className="login-register_modal">
+        <div onClick={this.props.closeModal} className="pull-right close-login-modal-dialog">
+          <span className="glyphicon glyphicon-remove"></span>
+        </div>
         <form className="user-login_form">
           <label className="bootstrapped-label">Enter your email</label>
           <input id="user_email" type="text" maxLength="40"/>
@@ -36,7 +38,8 @@ class LoginPage extends React.Component {
 
         <hr/>
         <p className="terms-and-conditions">
-          By logging into an account you are agreeing with our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Statement.</a>
+          By logging into an account you are agreeing with our <a href="#">Terms and Conditions</a> and <a href="#">Privacy
+          Statement.</a>
         </p>
       </div>
     );
@@ -44,3 +47,7 @@ class LoginPage extends React.Component {
 }
 
 export default LoginPage;
+
+LoginPage.propTypes = {
+  closeModal: PropTypes.func.isRequired
+};

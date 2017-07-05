@@ -10,10 +10,29 @@
   background-color: #fff;
   margin: 0 auto;
   position: absolute;
+  z-index:11;
   left: 0;
   right: 0;
   top: 180px;
-  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+  .close-login-modal-dialog {
+    border-radius: 50%;
+    color: #fff;
+    border: none;
+    width: 20px;
+    height: 20px;
+    margin: 4px 4px 0 2px;
+    background-color: #218daf;
+    cursor: pointer;
+    padding: 2.1px 0 0 3.5px;
+
+    &:hover {
+      background-color: #fff;
+      cursor: pointer;
+      color: #218daf;
+    }
+  }
 
   .user-login_form {
     padding: 20px 40px;

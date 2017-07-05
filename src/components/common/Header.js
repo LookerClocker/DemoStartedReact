@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
 import './Header.scss';
 import LoginPage from '../auth/login/LoginPage';
 
@@ -9,38 +8,54 @@ class Header extends React.Component {
     super(props);
 
     this.state = {
-      openLogin: false
+      showSignInModal: false
     };
 
     this.openLoginWindow = this.openLoginWindow.bind(this);
+    this.closeLoginWindow = this.closeLoginWindow.bind(this);
   }
 
-  openLoginWindow(){
+  openLoginWindow(event) {
+
+    event.preventDefault();
     this.setState({
-      openLogin: true
+      showSignInModal: !this.state.showSignInModal
     });
+
+    document.getElementsByClassName('overlay')[0].style.display = 'block';
+  }
+
+  closeLoginWindow(event) {
+
+    event.preventDefault();
+    this.setState({
+      showSignInModal: !this.state.showSignInModal
+    });
+
+    document.getElementsByClassName('overlay')[0].style.display = 'none';
   }
 
   render() {
+
+    document.getElementsByClassName('overlay')[0].onclick = (event) => {
+      this.closeLoginWindow(event);
+    };
+
     return (
       <div>
-      <div className="row" id="top">
-        <div className="col-md-6">
-          <span id="logo">Be My Paparazzi!</span>
-        </div>
-        <div className="col-md-6">
-          <div className="login-register_area">
-            <Link to="register">
+        <div className="row" id="top">
+          <div className="col-md-6">
+            <span id="logo">Be My Paparazzi!</span>
+          </div>
+          <div className="col-md-6">
+            <div className="login-register_area">
               <button>Register</button>
-            </Link>
-            <Link to="/">
-              <button>sign in</button>
-            </Link>
+              <button onClick={this.openLoginWindow}>sign in</button>
+            </div>
           </div>
         </div>
-      </div>
         <div>
-          <LoginPage/>
+          {this.state.showSignInModal ? <LoginPage closeModal={this.closeLoginWindow}/> : ''}
         </div>
       </div>
     );
