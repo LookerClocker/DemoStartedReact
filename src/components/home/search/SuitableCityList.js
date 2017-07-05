@@ -20,7 +20,7 @@ const SuitableCityList = (({cities, cityClick}) => {
           else {
             fullTitle = [name, country];
           }
-          return <li onClick={cityClick} key={city.id}>{fullTitle}</li>
+          return <li onClick={cityClick} key={city.id}>{fullTitle}</li>;
         }
       )}
     </ul>

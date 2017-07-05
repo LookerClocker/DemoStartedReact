@@ -11,13 +11,14 @@
 
   #logo {
     color: #fff;
-    font-size: 18px;
     padding: 0 0 0 10px;
     cursor: pointer;
+    font-family: fantasy;
+    font-weight: 600;
+    font-size: 13px;
   }
 
   .login-register_area {
-    width: 86%;
 
     button {
       float: right;
