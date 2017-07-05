@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import './Header.scss';
 import LoginPage from '../auth/login/LoginPage';
+import RegisterPage from '../auth/register/RegisterPage';
 
 
 class Header extends React.Component {
@@ -55,7 +56,12 @@ class Header extends React.Component {
           </div>
         </div>
         <div>
+
+          <div>
+
           {this.state.showSignInModal ? <LoginPage closeModal={this.closeLoginWindow}/> : ''}
+          </div>
+          {/*<RegisterPage/>*/}
         </div>
       </div>
     );
