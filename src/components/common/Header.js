@@ -11,7 +11,7 @@ const Header = () => {
       </div>
       <div className="col-md-6">
         <div className="login-register_area">
-          <button>Register</button>
+          <Link to="register"><button>Register</button></Link>
           <Link to="login"><button>sign in</button></Link>
         </div>
       </div>

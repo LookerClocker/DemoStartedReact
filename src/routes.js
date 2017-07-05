@@ -5,7 +5,7 @@ import AboutPage from './components/about/AboutPage';
 import CoursesPage from './components/course/CoursesPage';
 import ManageCoursePage from './components/course/ManageCoursePage'; //eslint-disable-line import/no-named-as-default
 import HomePage from './components/home/HomePage2'; //eslint-disable-line import/no-named-as-default
-import LoginPage from './components/login/LoginPage';
+import LoginPage from './components/auth/login/LoginPage';
 
 export default (
   <Route path="/" component={App}>
