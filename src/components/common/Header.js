@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import './Header.scss';
 import LoginPage from '../auth/login/LoginPage';
 import RegisterPage from '../auth/register/RegisterPage';
+import FontAwesome from 'react-fontawesome';
 
 
 class Header extends React.Component {
@@ -75,6 +76,7 @@ class Header extends React.Component {
               <div className="login-register_area">
                 <button id="register-button" onClick={this.openAuthModal}>Register</button>
                 <button id="signin-button" onClick={this.openAuthModal}>sign in</button>
+                {/*<FontAwesome className="user-profile-image" name="user-circle"/>*/}
               </div>
             </div>
           </div>
