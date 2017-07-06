@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.login-register_modal {
+.login_modal {
   width: 450px;
   height: auto;
   background-color: #fff;
@@ -27,7 +27,7 @@
     margin: 4px 4px 0 2px;
     background-color: #218daf;
     cursor: pointer;
-    padding: 1px 0 0 3px;
+    padding: 2px 0 0 3px;
 
     &:hover {
       background-color: #fff;
@@ -67,8 +67,7 @@
       }
     }
 
-    .submit_user-login_form,
-    .submit_user-register_form {
+    .submit_user-login_form {
       margin: 15px 0 25px 0;
       background-color: #218daf;
       color: #fff;
@@ -148,31 +147,5 @@
         color: #000;
       }
     }
-  }
-
-  .menu-tabs {
-
-    .login-tab,
-    .register-tab {
-      width: 50%;
-      display: inline-block;
-      background-color: transparent;
-      min-height: 38px;
-      padding: 7px 0 0 28px;
-      cursor: pointer;
-      font-size: 15px;
-      text-transform: capitalize;
-    }
-  }
-
-  .tab-active {
-    width: 50%;
-    display: inline-block;
-    background-color: rgba(33, 141, 175, 0.17);
-    min-height: 38px;
-    padding: 7px 0 0 28px;
-    cursor: pointer;
-    font-size: 15px;
-    text-transform: capitalize;
   }
 }

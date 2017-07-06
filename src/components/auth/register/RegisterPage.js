@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import './RegisterPage.scss';
 
 class RegisterPage extends React.Component {
   constructor(props) {
@@ -9,19 +10,26 @@ class RegisterPage extends React.Component {
 
   render() {
     return (
-      <div className="login-register_modal">
-        <form className="user-login_form">
-          <label className="bootstrapped-label">first name</label>
-          <input id="user_first_name"type="text" />
+      <div className="register_modal">
+        <div onClick={this.props.closeModal} className="pull-right close-register-modal-dialog">
+          <span className="glyphicon glyphicon-remove"></span>
+        </div>
+        <form className="user-register_form">
+          <div className="user-first-name">
+            <label className="bootstrapped-label">First name</label>
+            <input id="user_first-name_register" type="text"/>
+          </div>
+          <div className="user-last-name">
+            <label className="bootstrapped-label">Last name</label>
+            <input id="user_last-name_register" type="text"/>
+          </div>
 
-          <label className="bootstrapped-label">last name</label>
-          <input id="user_last_name"type="text" />
 
           <label className="bootstrapped-label">Enter your email</label>
-          <input id="user_email" type="text" maxLength="40"/>
+          <input id="user-email_register" type="text" maxLength="40"/>
 
           <label className="bootstrapped-label">Create password</label>
-          <input id="user_pass" type="password" maxLength="40"/>
+          <input id="user-pass_register" type="password" maxLength="40"/>
 
 
           <input type="submit" className="submit_user-register_form" value="register"/>
@@ -40,12 +48,17 @@ class RegisterPage extends React.Component {
 
         <hr/>
         <p className="terms-and-conditions">
-          By logging into an account you are agreeing with our <a href="#">Terms and Conditions</a> and <a href="#">Privacy Statement.</a>
+          By having into an account you are agreeing with our <a href="#">Terms and Conditions</a> and <a href="#">Privacy
+          Statement.</a>
         </p>
       </div>
     );
   }
 }
 
-
 export default RegisterPage;
+
+RegisterPage.propTypes = {
+  closeModal: PropTypes.func.isRequired
+};
+

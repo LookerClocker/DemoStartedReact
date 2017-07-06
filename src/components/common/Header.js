@@ -10,29 +10,50 @@ class Header extends React.Component {
     super(props);
 
     this.state = {
-      showSignInModal: false
+      showSignInModal: false,
+      showRegisterModal: false
     };
 
-    this.openLoginWindow = this.openLoginWindow.bind(this);
-    this.closeLoginWindow = this.closeLoginWindow.bind(this);
+    this.openAuthModal = this.openAuthModal.bind(this);
+    this.closeAuthModal = this.closeAuthModal.bind(this);
   }
 
-  openLoginWindow(event) {
-
+  openAuthModal(event) {
     event.preventDefault();
-    this.setState({
-      showSignInModal: !this.state.showSignInModal
-    });
+
+    if (event.target.id === 'signin-button') {
+
+      this.setState({
+        showSignInModal: !this.state.showSignInModal
+      });
+    }
+
+    else if (event.target.id === 'register-button') {
+
+      this.setState({
+        showRegisterModal: !this.state.showRegisterModal
+      });
+    }
 
     document.getElementsByClassName('overlay')[0].style.display = 'block';
   }
 
-  closeLoginWindow(event) {
-
+  closeAuthModal(event) {
     event.preventDefault();
-    this.setState({
-      showSignInModal: !this.state.showSignInModal
-    });
+
+    if (this.state.showSignInModal) {
+
+      this.setState({
+        showSignInModal: !this.state.showSignInModal
+      });
+
+    } else if (this.state.showRegisterModal) {
+
+      this.setState({
+        showRegisterModal: !this.state.showRegisterModal
+      });
+
+    }
 
     document.getElementsByClassName('overlay')[0].style.display = 'none';
   }
@@ -40,7 +61,7 @@ class Header extends React.Component {
   render() {
 
     document.getElementsByClassName('overlay')[0].onclick = (event) => {
-      this.closeLoginWindow(event);
+      this.closeAuthModal(event);
     };
 
     return (
@@ -52,20 +73,19 @@ class Header extends React.Component {
             </div>
             <div className="col-md-6">
               <div className="login-register_area">
-                <button>Register</button>
-                <button onClick={this.openLoginWindow}>sign in</button>
+                <button id="register-button" onClick={this.openAuthModal}>Register</button>
+                <button id="signin-button" onClick={this.openAuthModal}>sign in</button>
               </div>
             </div>
           </div>
-
         </div>
         <div>
 
           <div>
-
-          {this.state.showSignInModal ? <LoginPage closeModal={this.closeLoginWindow}/> : ''}
+            {this.state.showSignInModal ? <LoginPage closeModal={this.closeAuthModal}/> : ''}
+            {this.state.showRegisterModal ? <RegisterPage closeModal={this.closeAuthModal}/> : ''}
           </div>
-          {/*<RegisterPage/>*/}
+
         </div>
       </div>
     );
